@@ -52,7 +52,7 @@ def main(def_args=sys.argv[1:]):
     for day in (start_date + timedelta(n) for n in range(NUM)):
         if (not no_weekends or day.weekday() < 5) \
                 and randint(0, 100) < frequency:
-            for commit_time in (day + (timedelta(minutes=m) - 50000)
+            for commit_time in (day + timedelta(minutes=m)
                                 for m in range(contributions_per_day(args))):
                 contribute(commit_time)
 
