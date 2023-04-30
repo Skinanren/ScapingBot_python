@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Selected Actor: {{ name }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container" id ="page_result">
+  <div class="row">
+    <h6 class="pie_chat" style="padding-top: 20px;">showing {{num1}} to {{num2}} of {{all_num}} entries</h6>
+    <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+       <!-- note, the id is not used in the template -->
+      
+      <table class="table table-hover">
+        <tr>
+          <th>Number</th>
+          <th>Site Name</th>
+        </tr>
+  
+        <!-- here is a for-loop to give us all the socks -->
+        {% for s in message %}
+        <tr>
+          <td>{{ s['key'] }}</td>
+          <td><a href="{{ s['url'] }}">{{ s['url'] }}</a></td>
+        {% endfor %}
+      </table>
+      
+
+    </div>
+  </div>
+      <div class="row">
+        <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto"></div>
+        <div id="pagingDiv"></div>
+      </div>
+      </div>
+</div>
+
+{% endblock %}

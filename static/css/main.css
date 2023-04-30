@@ -1,0 +1,29 @@
+h1 {
+    font-size: 2em;
+}
+.row > h6 .pie_chat {
+    padding: 1em;
+}
+#load {
+    margin-top: 400px;
+    margin: auto;
+    
+}
+
+#chart {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+#trchart{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+#tdchart {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+canvas {
+    width: 100%;
+    
+}
