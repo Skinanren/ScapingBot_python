@@ -172,47 +172,48 @@ def pagenum():
 def chatdraw():
     form = NameForm()
     message = ""
-    with open(FILE_NAME,"r") as json_data:
-        file_data = json.load(json_data)
-    with open(CHAT_DATA,"r") as ch_json_data:
-        chat_data = json.load(ch_json_data)
+    # print("changed")
+    # with open(FILE_NAME,"r") as json_data:
+    #     file_data = json.load(json_data)
+    # with open(CHAT_DATA,"r") as ch_json_data:
+    #     chat_data = json.load(ch_json_data)
 
-    for i_data in file_data:
-        print("i_data['url] = ",i_data['url'])
-        req = Request(
-            url=i_data['url'], 
-            headers={'User-Agent': 'Mozilla/5.0'}
-        )
-        html = urlopen(req).read()
-        bs = BeautifulSoup(html, 'html5lib') 
-        # client = ScrapingBeeClient(api_key='4TAO8EV5D7WVT292QPGGEVJY9L4NQC67CJ6WPSW4RDZTEPZIMJOCL0DJH4XP8XCKHXFNWWZRJ6HG6MA1')
-        # response = client.get(i_data['url'])
-        # bs = BeautifulSoup(response.content, "html.parser")
+    # for i_data in file_data:
+    #     print("i_data['url] = ",i_data['url'])
+    #     req = Request(
+    #         url=i_data['url'], 
+    #         headers={'User-Agent': 'Mozilla/5.0'}
+    #     )
+    #     html = urlopen(req).read()
+    #     bs = BeautifulSoup(html, 'html5lib') 
+    #     # client = ScrapingBeeClient(api_key='4TAO8EV5D7WVT292QPGGEVJY9L4NQC67CJ6WPSW4RDZTEPZIMJOCL0DJH4XP8XCKHXFNWWZRJ6HG6MA1')
+    #     # response = client.get(i_data['url'])
+    #     # bs = BeautifulSoup(response.content, "html.parser")
   
-        for link in bs.find_all('a', href=re.compile('^(/|.*'+i_data['url']+')')):
-            # print(link.get_text())
-            link_text = {'text':link.get_text(),
-                         'count':1}
-            with open(TEXT_DATA,"r+") as text_data:
-                tex_data = json.load(text_data)
-                pos = -1
-                set_pos = -1
-                print("tex_data = ",tex_data)
-                for i_text in tex_data:
-                    pos += 1
-                    print("i_text = ",i_text['text'])
-                    print("link_text =",link_text['text'])
-                    if link_text['text'] == i_text['text']:
-                        set_pos = pos
-                        print("set_pos =",set_pos)    
-                if set_pos == -1:
-                    tex_data.append(link_text)
-                    print("tex_data",tex_data)
-                else:
-                    tex_data[set_pos]['count'] = tex_data[set_pos]['count'] + 1
-                print(tex_data[set_pos]['count'])   
-            with open(TEXT_DATA,"w") as wri_data:
-                json.dump(tex_data,wri_data,indent=4)
+    #     for link in bs.find_all('a', href=re.compile('^(/|.*'+i_data['url']+')')):
+    #         # print(link.get_text())
+    #         link_text = {'text':link.get_text(),
+    #                      'count':1}
+    #         with open(TEXT_DATA,"r+") as text_data:
+    #             tex_data = json.load(text_data)
+    #             pos = -1
+    #             set_pos = -1
+    #             print("tex_data = ",tex_data)
+    #             for i_text in tex_data:
+    #                 pos += 1
+    #                 print("i_text = ",i_text['text'])
+    #                 print("link_text =",link_text['text'])
+    #                 if link_text['text'] == i_text['text']:
+    #                     set_pos = pos
+    #                     print("set_pos =",set_pos)    
+    #             if set_pos == -1:
+    #                 tex_data.append(link_text)
+    #                 print("tex_data",tex_data)
+    #             else:
+    #                 tex_data[set_pos]['count'] = tex_data[set_pos]['count'] + 1
+    #             print(tex_data[set_pos]['count'])   
+    #         with open(TEXT_DATA,"w") as wri_data:
+    #             json.dump(tex_data,wri_data,indent=4)
                 
     with open(TEXT_DATA,"r") as ch_data:
         json_d = json.load(ch_data)
